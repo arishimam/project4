@@ -60,28 +60,46 @@
     }
   },
   {
-    "id": "tqsdgpsu1uow1nv",
-    "name": "posts",
+    "id": "oxxe03a2q1yvptq",
+    "name": "photos",
     "type": "base",
     "system": false,
     "schema": [
       {
         "system": false,
-        "id": "wrx4caoo",
-        "name": "title",
-        "type": "text",
+        "id": "vbtksv5z",
+        "name": "field",
+        "type": "relation",
         "required": false,
         "presentable": false,
         "unique": false,
         "options": {
-          "min": null,
-          "max": null,
-          "pattern": ""
+          "collectionId": "_pb_users_auth_",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
         }
       },
       {
         "system": false,
-        "id": "hxloxbmx",
+        "id": "0enldimu",
+        "name": "photo",
+        "type": "file",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "maxSize": 5242880,
+          "mimeTypes": [],
+          "thumbs": [],
+          "protected": false
+        }
+      },
+      {
+        "system": false,
+        "id": "h5nlmngn",
         "name": "description",
         "type": "text",
         "required": false,
@@ -95,37 +113,52 @@
       },
       {
         "system": false,
-        "id": "tiywcatj",
-        "name": "images",
-        "type": "file",
+        "id": "hdyuqzhb",
+        "name": "timestamp",
+        "type": "date",
         "required": false,
         "presentable": false,
         "unique": false,
         "options": {
-          "maxSelect": 99,
-          "maxSize": 5242880,
-          "mimeTypes": [],
-          "thumbs": [],
-          "protected": false
+          "min": "",
+          "max": ""
         }
-      },
+      }
+    ],
+    "indexes": [],
+    "listRule": null,
+    "viewRule": null,
+    "createRule": null,
+    "updateRule": null,
+    "deleteRule": null,
+    "options": {}
+  },
+  {
+    "id": "8rgfqn19vbsiq3a",
+    "name": "comments",
+    "type": "base",
+    "system": false,
+    "schema": [
       {
         "system": false,
-        "id": "xwrptjnz",
-        "name": "status",
-        "type": "select",
+        "id": "2ieekdwd",
+        "name": "photoID",
+        "type": "relation",
         "required": false,
         "presentable": false,
         "unique": false,
         "options": {
+          "collectionId": "oxxe03a2q1yvptq",
+          "cascadeDelete": false,
+          "minSelect": null,
           "maxSelect": 1,
-          "values": ["draft", "public"]
+          "displayFields": null
         }
       },
       {
         "system": false,
-        "id": "ugtk996e",
-        "name": "field",
+        "id": "0jyuys11",
+        "name": "userID",
         "type": "relation",
         "required": false,
         "presentable": false,
@@ -136,6 +169,33 @@
           "minSelect": null,
           "maxSelect": 1,
           "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "esfmahho",
+        "name": "commentText",
+        "type": "text",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "sftj3zpf",
+        "name": "timestamp",
+        "type": "date",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": "",
+          "max": ""
         }
       }
     ],
