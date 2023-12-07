@@ -32,7 +32,7 @@ export default function Auth() {
     <>
       {loading && <p>Loading...</p>}
       {/* <h1>Logged In: {loggedIn && pb.authStore.model.username} </h1> */}
-      <h1>In order to use this website, you need to log in!</h1>
+      <h1>Log in!</h1>
 
       <form onSubmit={handleSubmit(onLogin)}>
         <input type="text" placeholder="username" {...register("username")} />
