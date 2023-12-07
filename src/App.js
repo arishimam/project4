@@ -7,9 +7,6 @@ export default function App() {
   return (
     <>
       <Auth />
-      <PhotoUploadForm />
-      <PhotoGallery />
-      <CommentsSection />
     </>
   );
 }

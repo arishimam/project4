@@ -2,6 +2,7 @@ import pb from "lib/pocketbase";
 import { useForm } from "react-hook-form";
 import useLogout from "hooks/useLogout";
 import useLogin from "hooks/useLogin";
+import PhotoUploadForm from "PhotoUploadForm";
 
 export default function Auth() {
   const logout = useLogout();
@@ -25,6 +26,8 @@ export default function Auth() {
         <button type="submit" onClick={logout}>
           Log Out
         </button>
+
+        <PhotoUploadForm />
       </>
     );
 

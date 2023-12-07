@@ -1,12 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import pb from "lib/pocketbase";
 
 const PhotoUploadForm = () => {
   const [file, setFile] = useState(null);
   const [description, setDescription] = useState("");
+  const fileInputRef = useRef;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // query to upload file to pocketbase here
+    if (!file) {
+      alert("Please select a file to upload.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("field", pb.authStore.model.id);
+    // console.log(pb.authStore.model);
+    formData.append("photo", file);
+    formData.append("description", description);
+    // formData.append("timestamp", "");
+
+    try {
+      const record = await pb.collection("photos").create(formData);
+
+      console.log("Photo uploaded successfully!", record);
+      setFile(null);
+      setDescription("");
+      alert("Photo Uploaded Successfully!");
+
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    } catch (error) {
+      console.error("Error uploading photo", error);
+      if (error.response) {
+        console.error(
+          "Server responded with:",
+          error.response.status,
+          error.response.data
+        );
+      }
+    }
   };
 
   return (
