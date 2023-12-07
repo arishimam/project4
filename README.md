@@ -1,3 +1,19 @@
+# Getting Started with Pocketbase
+
+Download the appropriate version of pocketbase from
+https://pocketbase.io/docs/
+
+Put your pocketbase folder and project4 folder in the same directory.
+
+Run each in separate terminals.
+
+Run pocketbase with `./pocketbase serve`
+
+Navigate to [Pocketbase Admin Page](<[https://link-url-here.org](http://127.0.0.1:8090/_/)>) and setup an admin account.
+`http://127.0.0.1:8090/_/`
+
+Import database schema from pb_schema.json.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
