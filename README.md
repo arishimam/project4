@@ -9,7 +9,7 @@ Run each in separate terminals.
 
 Run pocketbase with `./pocketbase serve`
 
-Navigate to [Pocketbase Admin Page](<[https://link-url-here.org](http://127.0.0.1:8090/_/)>) and setup an admin account.
+Navigate to [Pocketbase Admin Page](http://127.0.0.1:8090/_/) and setup an admin account.
 `http://127.0.0.1:8090/_/`
 
 Import database schema from pb_schema.json.
