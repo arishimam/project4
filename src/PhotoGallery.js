@@ -3,9 +3,16 @@ import React, { useState, useEffect } from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
-import { Maximize } from "@mui/icons-material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
-const PhotoGallery = () => {
+
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import LibraryAdd from '@mui/icons-material/LibraryAdd';
+import AppBar from '@mui/material/AppBar';
+
+function PhotoGallery({navitation}) {
   const [photos, setPhotos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -31,7 +38,25 @@ const PhotoGallery = () => {
 
   return (
     <div className="photo-gallery">
-      
+              <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="add"
+            sx={{ mr: 2 }}
+            //onPress={() => navigation.navigate('Details')}
+          >
+            <LibraryAdd />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Home
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </Box>
       <ImageList sx={{ width: 500}}>
         {photos.map((photo) => (
           <ImageListItem>
