@@ -41,7 +41,7 @@ const PhotoGallery = () => {
 
 const Photo = ({ id, photo, description }) => {
   //   const imageUrl = `${process.env.REACT_APP_PB_URL}/api/collections/photos/records/${id}`;
-  const imageUrl = `${process.env.REACT_APP_PB_URL}/api/files/photos/${id}/${photo}`;
+  const imageUrl = `http://127.0.0.1:8090/api/files/photos/${id}/${photo}`;
   console.log(imageUrl);
   return (
     <div className="photo">
