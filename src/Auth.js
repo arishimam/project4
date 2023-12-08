@@ -4,6 +4,20 @@ import useLogout from "hooks/useLogout";
 import useLogin from "hooks/useLogin";
 import PhotoUploadForm from "PhotoUploadForm";
 import PhotoGallery from "PhotoGallery";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Avatar from "@mui/material/Avatar";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
+//utizliing template found on: https://github.com/mui/material-ui/blob/v5.14.20/docs/data/material/getting-started/templates/sign-in/SignIn.js
+
 export default function Auth() {
   const logout = useLogout();
 
@@ -23,9 +37,9 @@ export default function Auth() {
     return (
       <>
         <h1>Logged In: {pb.authStore.model.username}</h1>
-        <button type="submit" onClick={logout}>
+        <Button type="submit" onClick={logout}>
           Log Out
-        </button>
+        </Button>
 
         <PhotoUploadForm />
 
@@ -37,19 +51,43 @@ export default function Auth() {
     <>
       {loading && <p>Loading...</p>}
       {/* <h1>Logged In: {loggedIn && pb.authStore.model.username} </h1> */}
-      <h1>Log in!</h1>
-
-      <form onSubmit={handleSubmit(onLogin)}>
-        <input type="text" placeholder="username" {...register("username")} />
-        <input
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+        component="form"
+        onSubmit={handleSubmit(onLogin)}
+      >
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
+        <TextField
+          type="text"
+          autoFocus
+          margin="normal"
+          fullWidth
+          label="Username"
+          required
+          {...register("username")}
+        />
+        <TextField
           type="password"
-          placeholder="password"
+          margin="normal"
+          fullWidth
+          label="Password"
+          required
           {...register("password")}
         />
-        <button type="submit" disable={loading}>
+        <Button fullWidth variant="contained" type="submit" disable={loading}>
           {loading ? "Loading" : "Log In"}
-        </button>
-      </form>
+        </Button>
+      </Box>
     </>
   );
 }
