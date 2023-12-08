@@ -36,7 +36,13 @@ export default function Auth() {
   if (loggedIn)
     return (
       <>
-        <h1>Logged In: {pb.authStore.model.username}</h1>
+        <Avatar sx={{ width: 24, height: 24 }}>
+          {" "}
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h2">
+          welcome, {pb.authStore.model.username}!
+        </Typography>
         <Button type="submit" onClick={logout}>
           Log Out
         </Button>

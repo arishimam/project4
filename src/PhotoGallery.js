@@ -1,5 +1,8 @@
 import pb from "lib/pocketbase";
 import React, { useState, useEffect } from "react";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import ImageListItemBar from "@mui/material/ImageListItemBar";
 
 const PhotoGallery = () => {
   const [photos, setPhotos] = useState([]);
@@ -27,14 +30,23 @@ const PhotoGallery = () => {
 
   return (
     <div className="photo-gallery">
-      {photos.map((photo) => (
-        <Photo
-          key={photo.id}
-          id={photo.id}
-          photo={photo.photo}
-          description={photo.description}
-        />
-      ))}
+      <ImageList sx={{ width: 500, height: 450 }}>
+        {photos.map((photo) => (
+          <ImageListItem>
+            <img
+              key={photo.id}
+              id={photo.id}
+              src={`http://127.0.0.1:8090/api/files/photos/${photo.id}/${photo.photo}?w=248&fit=crop&auto=format`}
+              alt={photo.description}
+            />
+            <ImageListItemBar
+              title={photo.description}
+              subtitle={<span>by: {photo.field}</span>}
+              position="below"
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
     </div>
   );
 };
@@ -46,7 +58,10 @@ const Photo = ({ id, photo, description }) => {
   return (
     <div className="photo">
       {/* {console.log(photo)} */}
-      <img src={imageUrl} />
+      <img
+        srcSet={`${imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+        src={`${imageUrl}?w=248&fit=crop&auto=format`}
+      />
       <p>{description}</p>
     </div>
   );
