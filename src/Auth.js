@@ -68,7 +68,6 @@ export default function Auth() {
             color="inherit"
             aria-label="add"
             sx={{ mr: 2 }}
-            onPress={() => navigation.push('Details')}
           >
             <LibraryAdd />
           </IconButton>
