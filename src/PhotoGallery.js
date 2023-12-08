@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
+import { Maximize } from "@mui/icons-material";
 
 const PhotoGallery = () => {
   const [photos, setPhotos] = useState([]);
@@ -30,7 +31,8 @@ const PhotoGallery = () => {
 
   return (
     <div className="photo-gallery">
-      <ImageList sx={{ width: 500, height: 450 }}>
+      
+      <ImageList sx={{ width: 500}}>
         {photos.map((photo) => (
           <ImageListItem>
             <img

@@ -11,12 +11,27 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
+
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import LibraryAdd from '@mui/icons-material/LibraryAdd';
+import AppBar from '@mui/material/AppBar';
+
+
+
+
+import Drawer from '@mui/material/Drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 //utizliing template found on: https://github.com/mui/material-ui/blob/v5.14.20/docs/data/material/getting-started/templates/sign-in/SignIn.js
+const Stack = createNativeStackNavigator();
 
 export default function Auth() {
   const logout = useLogout();
@@ -33,10 +48,38 @@ export default function Auth() {
     reset();
   }
 
+
   if (loggedIn)
     return (
       <>
-        <Avatar sx={{ width: 24, height: 24 }}>
+
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Home" component={PhotoGallery} />
+            <Stack.Screen name="Upload" component={PhotoUploadForm} />
+          </Stack.Navigator>
+        </NavigationContainer>
+        <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="add"
+            sx={{ mr: 2 }}
+            onPress={() => navigation.push('Details')}
+          >
+            <LibraryAdd />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Home
+          </Typography>
+          <Button color="inherit" type="submit" onClick={logout}>Logout</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
+{/*         <Avatar sx={{ width: 24, height: 24 }}>
           {" "}
           <LockOutlinedIcon />
         </Avatar>
@@ -49,7 +92,7 @@ export default function Auth() {
 
         <PhotoUploadForm />
 
-        <PhotoGallery />
+        <PhotoGallery /> */}
       </>
     );
 
