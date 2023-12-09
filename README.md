@@ -11,10 +11,13 @@ Download the appropriate version of pocketbase from
 https://pocketbase.io/docs/
 
 Put your pocketbase folder and project4 folder in the same directory.
+e.g.
+directory_name/pb (unzipped pocketbase folder)
+directory_name/pb_app (react app folder)
 
 Run each in separate terminals.
-
 Run pocketbase with `./pocketbase serve`
+Run react app with `yarn start`
 
 Navigate to [Pocketbase Admin Page](http://127.0.0.1:8090/_/) and setup an admin account.
 `http://127.0.0.1:8090/_/`
