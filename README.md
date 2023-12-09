@@ -1,3 +1,10 @@
+# Group Members
+
+- Arish Imam
+- KJ Jennings
+- Victoria Parry
+- Andrew Delos Reyes
+
 # Getting Started with Pocketbase
 
 Download the appropriate version of pocketbase from

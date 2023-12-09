@@ -1,9 +1,9 @@
 import * as React from "react";
 import pb from "lib/pocketbase";
+
 import { useForm } from "react-hook-form";
 import useLogout from "hooks/useLogout";
 import useLogin from "hooks/useLogin";
-import PhotoUploadForm from "PhotoUploadForm";
 import PhotoGallery from "PhotoGallery";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -16,8 +16,6 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import LibraryAdd from "@mui/icons-material/LibraryAdd";
 import AppBar from "@mui/material/AppBar";
-
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
