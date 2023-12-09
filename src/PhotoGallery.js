@@ -6,13 +6,12 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import LibraryAdd from "@mui/icons-material/LibraryAdd";
+import AppBar from "@mui/material/AppBar";
 
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import LibraryAdd from '@mui/icons-material/LibraryAdd';
-import AppBar from '@mui/material/AppBar';
-
-function PhotoGallery({navitation}) {
+function PhotoGallery({ navitation }) {
   const [photos, setPhotos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -38,26 +37,27 @@ function PhotoGallery({navitation}) {
 
   return (
     <div className="photo-gallery">
-              <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="add"
-            sx={{ mr: 2 }}
-            //onPress={() => navigation.navigate('Details')}
-          >
-            <LibraryAdd />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Home
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </Box>
-      <ImageList sx={{ width: 500}}>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="add"
+              sx={{ mr: 2 }}
+              onPress={() => navitation.navigate("Upload")}
+              //onPress={() => navigation.navigate('Details')}
+            >
+              <LibraryAdd />
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Home
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      <ImageList sx={{ width: 500 }}>
         {photos.map((photo) => (
           <ImageListItem>
             <img
@@ -76,7 +76,7 @@ function PhotoGallery({navitation}) {
       </ImageList>
     </div>
   );
-};
+}
 
 const Photo = ({ id, photo, description }) => {
   //   const imageUrl = `${process.env.REACT_APP_PB_URL}/api/collections/photos/records/${id}`;
