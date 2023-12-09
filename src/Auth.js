@@ -17,7 +17,6 @@ import IconButton from "@mui/material/IconButton";
 import LibraryAdd from "@mui/icons-material/LibraryAdd";
 import AppBar from "@mui/material/AppBar";
 
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import "@fontsource/roboto/300.css";
@@ -26,9 +25,8 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 //utizliing template found on: https://github.com/mui/material-ui/blob/v5.14.20/docs/data/material/getting-started/templates/sign-in/SignIn.js
-const Stack = createNativeStackNavigator();
 
-export default function Auth() {
+export default function Auth({ navigation }) {
   const logout = useLogout();
 
   const { login, loading } = useLogin();
@@ -40,54 +38,47 @@ export default function Auth() {
   async function onLogin(data) {
     // data comes from react-hook-form
     login({ username: data.username, password: data.password });
+    // navigation.navigate("Home");
     reset();
   }
 
   if (loggedIn)
     return (
       <>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Home" component={PhotoGallery} />
-            <Stack.Screen name="Upload" component={PhotoUploadForm} />
-          </Stack.Navigator>
-        </NavigationContainer>
-        <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static">
-            <Toolbar>
-              <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="add"
-                sx={{ mr: 2 }}
-                onClick={() => navigation.navigate("Upload")}
-              >
-                <LibraryAdd />
-              </IconButton>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                Home
-              </Typography>
-              <Button color="inherit" type="submit" onClick={logout}>
-                Logout
-              </Button>
-            </Toolbar>
-          </AppBar>
-        </Box>
-        {/*         <Avatar sx={{ width: 24, height: 24 }}>
-          {" "}
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h2">
-          welcome, {pb.authStore.model.username}!
-        </Typography>
-        <Button type="submit" onClick={logout}>
-          Log Out
-        </Button>
+        {
+          <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static">
+              <Toolbar>
+                <IconButton
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="add"
+                  sx={{ mr: 2 }}
+                  onClick={() => navigation.navigate("Upload")}
+                >
+                  <LibraryAdd />
+                </IconButton>
+                <Button
+                  color="inherit"
+                  sx={{ flexGrow: 1, justifyContent: "start" }}
+                  onClick={() => navigation.navigate("Home")}
+                >
+                  <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    Home
+                  </Typography>
+                </Button>
+                <Button color="inherit" type="submit" onClick={logout}>
+                  Logout
+                </Button>
+              </Toolbar>
+            </AppBar>
+          </Box>
+        }
 
-        <PhotoUploadForm />
+        {/* <PhotoUploadForm /> */}
 
-        <PhotoGallery /> */}
+        <PhotoGallery />
       </>
     );
 
@@ -115,7 +106,7 @@ export default function Auth() {
           type="text"
           autoFocus
           margin="normal"
-          fullWidth
+          sx={{ width: "50%" }}
           label="Username"
           required
           {...register("username")}
@@ -123,12 +114,18 @@ export default function Auth() {
         <TextField
           type="password"
           margin="normal"
-          fullWidth
+          sx={{ width: "50%" }}
           label="Password"
           required
           {...register("password")}
         />
-        <Button fullWidth variant="contained" type="submit" disable={loading}>
+        <br />
+        <Button
+          sx={{ width: "50%", height: "60px" }}
+          variant="contained"
+          type="submit"
+          disable={loading}
+        >
           {loading ? "Loading" : "Log In"}
         </Button>
       </Box>

@@ -11,9 +11,12 @@ import IconButton from "@mui/material/IconButton";
 import LibraryAdd from "@mui/icons-material/LibraryAdd";
 import AppBar from "@mui/material/AppBar";
 
-function PhotoGallery({ navitation }) {
+import { useNavigation } from "@react-navigation/native";
+
+function PhotoGallery() {
   const [photos, setPhotos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigation = useNavigation();
 
   useEffect(() => {
     // fetch photos form pocketbase
@@ -37,7 +40,7 @@ function PhotoGallery({ navitation }) {
 
   return (
     <div className="photo-gallery">
-      <Box sx={{ flexGrow: 1 }}>
+      {/* <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
             <IconButton
@@ -46,7 +49,7 @@ function PhotoGallery({ navitation }) {
               color="inherit"
               aria-label="add"
               sx={{ mr: 2 }}
-              onPress={() => navitation.navigate("Upload")}
+              onPress={() => navigation.navigate("Upload")}
               //onPress={() => navigation.navigate('Details')}
             >
               <LibraryAdd />
@@ -56,10 +59,11 @@ function PhotoGallery({ navitation }) {
             </Typography>
           </Toolbar>
         </AppBar>
-      </Box>
-      <ImageList sx={{ width: 500 }}>
+      </Box> */}
+      <ImageList cols={3} sx={{ padding: "10px" }}>
         {photos.map((photo) => (
-          <ImageListItem>
+          <ImageListItem sx={{padding:"5px"}}>
+            {console.log(photo)}
             <img
               key={photo.id}
               id={photo.id}
@@ -68,7 +72,7 @@ function PhotoGallery({ navitation }) {
             />
             <ImageListItemBar
               title={photo.description}
-              subtitle={<span>by: {photo.field}</span>}
+              //   subtitle={<span>by: {photo.field}</span>}
               position="below"
             />
           </ImageListItem>
